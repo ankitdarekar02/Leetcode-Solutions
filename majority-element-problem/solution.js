@@ -1,6 +1,6 @@
 var majorityElement = function(nums) {
     //  Using Boyer-Moore Voting Algorithm 
-    // Time Complecity : O(n)
+    // Time Complexity : O(n)
 
     let majIndex = 0, count = 0;
         nums.forEach((num, i) => {
