@@ -1,3 +1,4 @@
+# Binary Search approach: Time Complexity O(log n) and Space Complexity O(1)
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
         low = 0;

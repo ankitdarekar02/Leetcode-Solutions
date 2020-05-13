@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+// Binary Search approach: Time Complexity O(log n) and Space Complexity O(1)
 var singleNonDuplicate = function(nums) {
     let low = 0;
     let high = nums.length - 1;
