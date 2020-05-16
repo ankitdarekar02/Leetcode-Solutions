@@ -3,9 +3,8 @@
  */
 var trieNode = function(value) {
     this.val = value;
-    this.isEnd = false;
+    this.isTerminating = false;
     this.children = {};
-
 }
 
 var Trie = function(value = null) {
@@ -18,14 +17,14 @@ var Trie = function(value = null) {
  * @return {void}
  */
 Trie.prototype.insert = function(word) {
-    let currNode = this.root;
-    for (let letter of word) {
-        if (!currNode.children[letter])
-            currNode = currNode.children[letter] = new trieNode(letter);
+    let parent = this.root;
+    for (let char of word) {
+        if (!parent.children[char])
+            parent = parent.children[char] = new trieNode(char);
         else
-            currNode = currNode.children[letter];
+            parent = parent.children[char];
     }
-    currNode.isEnd = true;
+    parent.isTerminating = true;
 };
 
 /**
@@ -34,14 +33,16 @@ Trie.prototype.insert = function(word) {
  * @return {boolean}
  */
 Trie.prototype.search = function(word, isPrefix = false) {
-    let currNode = this.root;
-    for (let letter of word) {
-        if (!currNode.children[letter])
-            return false;
-        else
-            currNode = currNode.children[letter];
+    let parent = this.root;
+    for (char of word) {
+        if(!parent.children[char]){
+            return false
+        }
+        else {
+            parent = parent.children[char]
+        }
     }
-    return (isPrefix)?true:currNode.isEnd;
+    return (isPrefix)? true: parent.isTerminating;
 };
 
 /**
