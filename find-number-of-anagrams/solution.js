@@ -3,6 +3,7 @@
  * @param {string} p
  * @return {number[]}
  */
+// Using Sliding Window Approach
 var findAnagrams = function(s, p) {
     let hash = {},  uniqueChars = 0;
    for (let c of p) {
