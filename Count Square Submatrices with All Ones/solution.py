@@ -1,3 +1,4 @@
+# Approach 1
 class Solution:
     def countSquares(self, matrix: List[List[int]]) -> int:
         n = len(matrix)
@@ -12,4 +13,24 @@ class Solution:
                     print(count)
                     
         return count
+                        
+
+# Approach 2
+class Solution:
+    def countSquares(self, matrix: List[List[int]]) -> int:
+        if matrix is None or len(matrix) == 0:
+                return 0
+        rows = len(matrix)
+        cols = len(matrix[0])
+        result = 0 
+        for r in range(rows):
+            for c in range(cols):
+                if matrix[r][c] ==1:
+                    if r == 0 or c == 0:
+                            result +=1
+                    else:
+                        cell_value = matrix[r][c] + min(matrix[r-1][c], matrix[r][c-1], matrix[r-1][c-1])
+                        result += cell_value
+                        matrix[r][c] = cell_value
+        return result
                         
